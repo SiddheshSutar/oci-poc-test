@@ -1,13 +1,33 @@
 "use client"
 
 import { useEffect } from "react"
-// import { client, initOci } from "../helpers"
+// import { initOci } from "../_utils/helpers"
+// import { initOci } from "../helpers"
 
 const OCI = () => {
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/initOciClient')
-        // fetch('http://localhost:4000') 
+        // fetch('http://localhost:3000/api/initOciClient')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log('hex: ', data)
+        //     })
+        //     .catch(e => {
+        //         console.log('hex err: ', e)
+        //     })
+
+        // initOci()
+
+        // fetch('http://localhost:3000/api/createIndex')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log('hex: ', data)
+        //     })
+        //     .catch(e => {
+        //         console.log('hex err: ', e)
+        //     })
+
+        fetch('http://localhost:3000/api/searchIndex')
             .then(res => res.json())
             .then(data => {
                 console.log('hex: ', data)
@@ -15,8 +35,15 @@ const OCI = () => {
             .catch(e => {
                 console.log('hex err: ', e)
             })
-        
-        // initOci()
+
+        // fetch('http://localhost:3000/api/addDocument')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log('hex: ', data)
+        //     })
+        //     .catch(e => {
+        //         console.log('hex err: ', e)
+        //     })
     }, [])
 
     return (
