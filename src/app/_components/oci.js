@@ -27,14 +27,14 @@ const OCI = () => {
         //         console.log('hex err: ', e)
         //     })
 
-        fetch('http://localhost:3000/api/searchIndex')
-            .then(res => res.json())
-            .then(data => {
-                console.log('hex: ', data)
-            })
-            .catch(e => {
-                console.log('hex err: ', e)
-            })
+        // fetch('http://localhost:3000/api/searchIndex')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log('hex: ', data)
+        //     })
+        //     .catch(e => {
+        //         console.log('hex err: ', e)
+        //     })
 
         // fetch('http://localhost:3000/api/addDocument')
         //     .then(res => res.json())
@@ -44,10 +44,25 @@ const OCI = () => {
         //     .catch(e => {
         //         console.log('hex err: ', e)
         //     })
+            
+        
     }, [])
+    
+    const searchDoc = () => {
+        fetch('http://localhost:3000/api/searchDocument')
+            .then(res => res.json())
+            .then(data => {
+                console.log('hex: ', data)
+            })
+            .catch(e => {
+                console.log('hex err: ', e)
+            })
+    }
 
     return (
-        <div>OCI</div>
+        <div className="flex gap-1">
+            <button type="button" onClick={searchDoc}>Search Doc</button>
+        </div>
     );
 }
 
