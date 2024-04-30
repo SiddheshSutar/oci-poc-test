@@ -21,6 +21,6 @@ export async function GET(req, res) {
     console.log("Search results:");
     console.log(JSON.stringify(response.body.hits, null, "  "));
     
-    return NextResponse.json({ message: 'Hello from search doc!' })
+    return NextResponse.json({ message: 'Hello from search doc!', res: response.body })
     
 }
