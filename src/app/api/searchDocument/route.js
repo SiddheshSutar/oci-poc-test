@@ -6,21 +6,37 @@ export async function GET(req, res) {
     var query = {
       query: {
         match: {
-          title: {
-            query: "The Outsider",
+        //   title: {
+          firstName: {
+            query: "Gayle",
           },
         },
       },
     };
+    
+    const multiSearhQuery = [
+        {},
+        { query: { match: { firstName: 'john' } }, },
+        {},
+        { query: { match: { maidenName: 'john' } }, }
+    ]
   
     var response = await client.search({
-      index: 'books',
+    //   index: 'books',
+      index: 'bookss',
       body: query,
     });
-  
-    console.log("Search results:");
-    console.log(JSON.stringify(response.body.hits, null, "  "));
     
-    return NextResponse.json({ message: 'Hello from search doc!', res: response.body })
+    const multiSearchResponse = await client.msearch({
+        index: 'bookss',
+        body: multiSearhQuery,
+    });
+        
+  
+    // console.log("Search results:");
+    // console.log(JSON.stringify(response.body.hits, null, "  "));
+    // console.log('hex: ', users);
+    
+    return NextResponse.json({ message: 'Hello from search doc!', res: {res: response.body, msearch: multiSearchResponse} })
     
 }
