@@ -24,11 +24,11 @@ export async function GET(req, res) {
             refresh: true,
         });
 
-        // const data = await fetch('https://dummyjson.com/users?limit=10000')
-        //     .then(res => res.json())
+        // const dataMain = await fetch('https://dummyjson.com/users?limit=10000')
+        // const data = await dataMain.json()
 
         // // console.log("Adding document:");
-        // // console.log('hex:', data.users.length);
+        // console.log('hex:', data.users[0]);
         // const promises = []
         
         // if(data.users.length > 0) {
@@ -37,7 +37,7 @@ export async function GET(req, res) {
                 
         //         const res = client.index({
         //             id: JSON.stringify(element.id),
-        //             index: index_name + 's',
+        //             index: 'users_poc',
         //             body: payload,
         //             refresh: true,
         //         });
@@ -46,9 +46,8 @@ export async function GET(req, res) {
         // }
         
         // const finalRes = await Promise.all(promises)
-            // .then(res => {
-            // })
-            // console.log('hex all: ', finalRes)
+           
+        //     console.log('hex all: ', finalRes)
 
         return NextResponse.json({ message: 'Add Doc Successful', response }, { status: 200 })
 

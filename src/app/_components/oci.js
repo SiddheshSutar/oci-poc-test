@@ -73,7 +73,7 @@ const OCI = () => {
     const searchDoc = async () => {
         
     
-        const users = fetch('https://dummyjson.com/users?q=John&limit=10000')
+        const users = fetch('https://dummyjson.com/users?q=Gayle&limit=10000')
             .then(res => res.json())
     
         fetch('http://localhost:3000/api/searchDocument')

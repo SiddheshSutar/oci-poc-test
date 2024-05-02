@@ -2,7 +2,7 @@ import { client } from "@/app/_utils/helpers";
 import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
-    let response = await client.http.head({ path: '/bookss' });
+    let response = await client.http.head({ path: '/users_poc' });
     // print_response('Check If Index Exists');
     console.log('hex: search: ', response)
     

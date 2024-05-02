@@ -6,7 +6,6 @@ export async function GET(req, res) {
     var query = {
       query: {
         match: {
-        //   title: {
           firstName: {
             query: "Gayle",
           },
@@ -23,20 +22,21 @@ export async function GET(req, res) {
   
     var response = await client.search({
     //   index: 'books',
-      index: 'bookss',
+      index: 'users_poc',
       body: query,
     });
     
-    const multiSearchResponse = await client.msearch({
-        index: 'bookss',
-        body: multiSearhQuery,
-    });
+    // const multiSearchResponse = await client.msearch({
+    //     index: 'users_poc',
+    //     body: multiSearhQuery,
+    // });
         
   
     // console.log("Search results:");
     // console.log(JSON.stringify(response.body.hits, null, "  "));
     // console.log('hex: ', users);
     
-    return NextResponse.json({ message: 'Hello from search doc!', res: {res: response.body, msearch: multiSearchResponse} })
+    return NextResponse.json({ message: 'Hello from search doc!', res: {res: response.body } })
+    // return NextResponse.json({ message: 'Hello from search doc!', res: {res: response.body, msearch: multiSearchResponse} })
     
 }
