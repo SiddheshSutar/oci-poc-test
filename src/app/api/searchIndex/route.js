@@ -3,8 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     let response = await client.http.head({ path: '/users_poc' });
-    // print_response('Check If Index Exists');
-    console.log('hex: search: ', response)
+    console.log('search: ', response)
     
     // const isFound = response.body // gives true or false
 
