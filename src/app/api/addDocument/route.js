@@ -15,6 +15,34 @@ export async function GET(req, res) {
     var id = "1";
 
     let response = null
+    
+    const addAllOnce = async () => {
+        const dataMain = await fetch('https://dummyjson.com/users?limit=10000')
+        const data = await dataMain.json()
+
+        // console.log("Adding document:");
+        console.log('hex:', data.users[0]);
+        const promises = []
+        
+        if(data.users.length > 0) {
+            data.users.forEach(element => {
+                const payload = {...element}
+                
+                const res = client.index({
+                    id: JSON.stringify(element.id),
+                    index: 'users_poc',
+                    body: payload,
+                    refresh: true,
+                });
+                promises.push(res)
+            });
+        }
+        
+        const finalRes = await Promise.all(promises)
+           
+            console.log('hex all: ', finalRes)
+
+    }
 
     try {
         response = await client.index({
@@ -24,31 +52,8 @@ export async function GET(req, res) {
             refresh: true,
         });
 
-        // const dataMain = await fetch('https://dummyjson.com/users?limit=10000')
-        // const data = await dataMain.json()
-
-        // // console.log("Adding document:");
-        // console.log('hex:', data.users[0]);
-        // const promises = []
+        // await addAllOnce()
         
-        // if(data.users.length > 0) {
-        //     data.users.forEach(element => {
-        //         const payload = {...element}
-                
-        //         const res = client.index({
-        //             id: JSON.stringify(element.id),
-        //             index: 'users_poc',
-        //             body: payload,
-        //             refresh: true,
-        //         });
-        //         promises.push(res)
-        //     });
-        // }
-        
-        // const finalRes = await Promise.all(promises)
-           
-        //     console.log('hex all: ', finalRes)
-
         return NextResponse.json({ message: 'Add Doc Successful', response }, { status: 200 })
 
     } catch (e) {

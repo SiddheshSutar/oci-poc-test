@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     // Search for the document
+    /** 1. */
     var query = {
       query: {
         match: {
@@ -12,19 +13,21 @@ export async function GET(req, res) {
         },
       },
     };
-    
-    const multiSearhQuery = [
-        {},
-        { query: { match: { firstName: 'john' } }, },
-        {},
-        { query: { match: { maidenName: 'john' } }, }
-    ]
   
     var response = await client.search({
     //   index: 'books',
       index: 'users_poc',
       body: query,
     });
+    
+    
+    /** 2 */
+    // const multiSearhQuery = [
+    //     {},
+    //     { query: { match: { firstName: 'john' } }, },
+    //     {},
+    //     { query: { match: { maidenName: 'john' } }, }
+    // ]
     
     // const multiSearchResponse = await client.msearch({
     //     index: 'users_poc',

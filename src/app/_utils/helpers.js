@@ -8,7 +8,6 @@ function initOci() {
     
     let clientVar = new Client({
         node: "https://144.24.213.233:9200",
-        // node: "https://amaaaaaasj6bavyascuegjbnl2auhkjbnmbqohvmulnphiqpg36mcn2xtvma.opensearch.me-jeddah-1.oci.oraclecloud.com:9200",
         auth: {
             username: "Devuser",
             password: "Cloud#2024"

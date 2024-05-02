@@ -3,54 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
 
-  // var client = new Client({
-  //   node: "https://144.24.213.233:9200",
-  //   // node: "https://amaaaaaasj6bavyascuegjbnl2auhkjbnmbqohvmulnphiqpg36mcn2xtvma.opensearch.me-jeddah-1.oci.oraclecloud.com:9200",
-  //   auth: {
-  //     username: "Devuser",
-  //     password: "Cloud#2024"
-  //   },
-  //   ssl: {
-  //     rejectUnauthorized: false
-  //   }
-  // });
-
   
   
-  // // Create an index with non-default settings
-  // var index_name = "books";
-  
-  // var settings = {
-  //   settings: {
-  //     index: {
-  //       number_of_shards: 4,
-  //       number_of_replicas: 3,
-  //     },
-  //   },
-  // };
 
-  // var response = await client.indices.create({
-  //   index: index_name,
-  //   body: settings,
-  // });
 
-  // console.log("Creating index:");
-  
-  // var query = {
-  //   query: {
-  //     match: {
-  //       title: {
-  //         query: "The Outsider",
-  //       },
-  //     },
-  //   },
-  // };
-
-  // var response = await client.search({
-  //   index: 'boooks',
-  //   body: query,
-  // });
-  // console.log('hex: api: ', response)
   
   // async function search() {
   //   // // Create an index with non-default settings
