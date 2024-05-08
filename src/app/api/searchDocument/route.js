@@ -6,9 +6,14 @@ export async function GET(req, res) {
     /** 1. */
     var query = {
       query: {
+        // match: {
+        //   firstName: {
+        //     query: "Gayle",
+        //   },
+        // },
         match: {
-          firstName: {
-            query: "Gayle",
+          englishName: {
+            query: "edd",
           },
         },
       },
@@ -16,7 +21,8 @@ export async function GET(req, res) {
   
     var response = await client.search({
     //   index: 'books',
-      index: 'users_poc',
+      // index: 'users_poc',
+      index: 'test_sites',
       body: query,
     });
     

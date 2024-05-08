@@ -1,11 +1,12 @@
 "use client"
 
+import axios from "axios"
 import { useEffect } from "react"
 
 const OCI = () => {
     
     const createIndex = () => {
-        fetch('http://localhost:3000/api/createIndex')
+        fetch('http://localhost:4000/api/createIndex')
             .then(res => res.json())
             .then(data => {
                 console.log('hex: ', data)
@@ -16,14 +17,21 @@ const OCI = () => {
     }
     
     const addDoc = () => {
-        fetch('http://localhost:3000/api/addDocument')
-            .then(res => res.json())
+        axios.post('http://localhost:4000/api/addDocument',{ document: 'ss' })
             .then(data => {
                 console.log('hex: ', data)
             })
             .catch(e => {
                 console.log('hex err: ', e)
             })
+        // fetch('http://localhost:4000/api/addDocument', { document: 'ss' })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log('hex: ', data)
+        //     })
+        //     .catch(e => {
+        //         console.log('hex err: ', e)
+        //     })
     }
   
     const searchDoc = async () => {
@@ -32,7 +40,7 @@ const OCI = () => {
         const users = fetch('https://dummyjson.com/users?q=Gayle&limit=10000')
             .then(res => res.json())
     
-        fetch('http://localhost:3000/api/searchDocument')
+        fetch('http://localhost:4000/api/searchDocument')
             .then(res => res.json())
             .then(data => {
                 console.log('hex: ', data)
@@ -44,7 +52,7 @@ const OCI = () => {
   
     const searchIndex = async () => {
     
-        fetch('http://localhost:3000/api/searchIndex')
+        fetch('http://localhost:4000/api/searchIndex')
             .then(res => res.json())
             .then(data => {
                 console.log('hex: ', data)

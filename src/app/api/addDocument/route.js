@@ -1,8 +1,40 @@
 import { client } from "@/app/_utils/helpers";
 import { NextResponse } from "next/server";
+import NextCors from "nextjs-cors";
 
-export async function GET(req, res) {
-    var index_name = "books";
+
+// export async function OPTIONS(req, res) {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//     res.status(200).end();
+// }
+export async function POST(req, res) {
+    // await NextCors(req, res, {
+    //     // Options
+    //     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    //     origin: '*',
+    //     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    //  });
+    
+    // if (req.method === 'OPTIONS') {
+    //     // Set CORS headers for preflight request
+    //     res.setHeader('Access-Control-Allow-Origin', '*');
+    //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    //     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    //     res.status(200).end(); // Respond to preflight request
+    //     return;
+    // }
+    
+     // Set the CORS headers to allow requests from any origin
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    // // Set the allowed HTTP methods that can be used when making the request
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    // // Set the allowed headers that can be used in the request
+    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+     
+    
+    
 
     // Add a document to the index
     var document = {
@@ -11,6 +43,15 @@ export async function GET(req, res) {
         year: "2018",
         genre: "Crime fiction",
     };
+    
+    // const reqq = await req.json()
+    // console.log('hex: ',reqq)
+    
+    // if(reqq.body.document) {
+    //     document = reqq.body.document
+    // }
+    
+    // return NextResponse.json({ message: 'Stopped' }, { status: 200 })
 
     var id = "1";
 
@@ -46,14 +87,15 @@ export async function GET(req, res) {
 
     try {
         response = await client.index({
+            // id: document.id ?? id,
             id: id,
             index: index_name + 's',
+            // index: index_name,
             body: document,
             refresh: true,
         });
 
         // await addAllOnce()
-        
         return NextResponse.json({ message: 'Add Doc Successful', response }, { status: 200 })
 
     } catch (e) {

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     // Create an index with non-default settings
-    var index_name = "users_poc";
+    var index_name = "test_sites";
 
     var settings = {
         settings: {
